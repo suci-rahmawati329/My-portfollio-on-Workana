@@ -102,7 +102,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.32, ease: [0.22, 1, 0.36, 1] }}
           >
-            <ButtonLink href="/work">View selected work</ButtonLink>
+            <ButtonLink href="/work">View all projects</ButtonLink>
             <ButtonLink href="/contact" variant="ghost">
               Start a project
             </ButtonLink>

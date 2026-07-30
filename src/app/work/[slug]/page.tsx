@@ -3,7 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Reveal } from "@/components/motion/Reveal";
 import { ButtonLink } from "@/components/ui/ButtonLink";
+import { ProjectActions } from "@/components/work/ProjectActions";
 import { getProject, projects } from "@/data/projects";
+import { projectUrl } from "@/data/site";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -46,6 +48,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
           <p className="mt-5 max-w-2xl text-pretty text-lg text-ink-soft">
             {project.summary}
           </p>
+          <ProjectActions slug={project.slug} className="mt-8" showShareUrl />
           <dl className="mt-10 grid gap-6 border-t border-line pt-8 sm:grid-cols-2 lg:grid-cols-4">
             <div>
               <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
@@ -141,6 +144,35 @@ export default async function CaseStudyPage({ params }: PageProps) {
           <aside className="space-y-10 md:sticky md:top-28 md:self-start">
             <div className="border border-line bg-surface p-6 backdrop-blur-sm">
               <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
+                Project link
+              </h3>
+              <a
+                href={projectUrl(project.slug)}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-3 block break-all font-mono text-xs leading-relaxed text-accent underline-offset-2 hover:underline"
+              >
+                {projectUrl(project.slug)}
+              </a>
+              <div className="mt-5">
+                <ButtonLink
+                  href={projectUrl(project.slug)}
+                  external
+                  className="w-full"
+                >
+                  Open live project
+                  <span aria-hidden>↗</span>
+                </ButtonLink>
+              </div>
+              <div className="mt-3">
+                <ButtonLink href="/work" variant="ghost" className="w-full">
+                  View all projects
+                </ButtonLink>
+              </div>
+            </div>
+
+            <div className="border border-line bg-surface p-6 backdrop-blur-sm">
+              <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
                 Results
               </h3>
               <ul className="mt-5 space-y-4">
@@ -214,7 +246,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
         <div className="site-grid flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
-              Next case study
+              Next project
             </p>
             <Link
               href={`/work/${next.slug}`}
@@ -222,9 +254,12 @@ export default async function CaseStudyPage({ params }: PageProps) {
             >
               {next.title}
             </Link>
+            <div className="mt-5">
+              <ProjectActions slug={next.slug} size="compact" />
+            </div>
           </div>
-          <ButtonLink href="/contact" variant="ghost">
-            Discuss a similar project
+          <ButtonLink href="/work" variant="ghost">
+            Browse all projects
           </ButtonLink>
         </div>
       </section>
