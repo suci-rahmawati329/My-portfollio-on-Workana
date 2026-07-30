@@ -38,7 +38,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
       <header className="site-grid py-14 md:py-20">
         <Reveal>
           <p className="font-mono text-xs uppercase tracking-[0.22em] text-muted">
-            Case study · {project.year}
+            {project.category} · {project.year} · {project.budgetBand}
           </p>
           <h1 className="mt-3 max-w-4xl font-display text-4xl font-semibold tracking-tight text-balance md:text-6xl">
             {project.title}
@@ -46,10 +46,10 @@ export default async function CaseStudyPage({ params }: PageProps) {
           <p className="mt-5 max-w-2xl text-pretty text-lg text-ink-soft">
             {project.summary}
           </p>
-          <dl className="mt-10 grid gap-6 border-t border-line pt-8 sm:grid-cols-3">
+          <dl className="mt-10 grid gap-6 border-t border-line pt-8 sm:grid-cols-2 lg:grid-cols-4">
             <div>
               <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
-                Client
+                Client context
               </dt>
               <dd className="mt-2 text-ink">{project.client}</dd>
             </div>
@@ -58,6 +58,12 @@ export default async function CaseStudyPage({ params }: PageProps) {
                 Role
               </dt>
               <dd className="mt-2 text-ink">{project.role}</dd>
+            </div>
+            <div>
+              <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
+                Category
+              </dt>
+              <dd className="mt-2 text-ink">{project.category}</dd>
             </div>
             <div>
               <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
@@ -70,12 +76,22 @@ export default async function CaseStudyPage({ params }: PageProps) {
       </header>
 
       <div
-        className="min-h-[280px] md:min-h-[420px]"
+        className="relative min-h-[280px] overflow-hidden md:min-h-[420px]"
         style={{
           background: `linear-gradient(145deg, ${project.cover.from}, ${project.cover.to})`,
         }}
         aria-hidden
-      />
+      >
+        <div className="absolute inset-0 opacity-40 mix-blend-overlay bg-[radial-gradient(circle_at_25%_20%,white,transparent_42%)]" />
+        <div className="absolute inset-0 flex items-end justify-between p-8 text-white md:p-12">
+          <span className="font-mono text-xs uppercase tracking-[0.22em] opacity-80">
+            {project.cover.label}
+          </span>
+          <span className="font-display text-2xl font-semibold md:text-4xl">
+            {project.title}
+          </span>
+        </div>
+      </div>
 
       <div className="site-grid grid gap-16 py-16 md:grid-cols-[1fr_0.85fr] md:gap-20 md:py-24">
         <Reveal>
@@ -103,6 +119,22 @@ export default async function CaseStudyPage({ params }: PageProps) {
               ))}
             </ol>
           </section>
+
+          <section className="mt-14">
+            <h2 className="font-display text-2xl font-semibold tracking-tight md:text-3xl">
+              What was delivered
+            </h2>
+            <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+              {project.deliverables.map((item) => (
+                <li
+                  key={item}
+                  className="border-l-2 border-accent bg-surface/60 px-4 py-3 text-sm text-ink-soft"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </section>
         </Reveal>
 
         <Reveal delay={0.1}>
@@ -121,6 +153,22 @@ export default async function CaseStudyPage({ params }: PageProps) {
                     <span className="font-display text-lg font-semibold text-accent">
                       {result.value}
                     </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
+                Skills matched
+              </h3>
+              <ul className="mt-4 flex flex-wrap gap-2">
+                {project.skills.map((skill) => (
+                  <li
+                    key={skill}
+                    className="border border-accent/30 bg-accent-mist px-3 py-1.5 text-sm text-accent"
+                  >
+                    {skill}
                   </li>
                 ))}
               </ul>
@@ -154,6 +202,10 @@ export default async function CaseStudyPage({ params }: PageProps) {
                 ))}
               </ul>
             </div>
+
+            <ButtonLink href="/contact" className="w-full">
+              Hire me for a similar project
+            </ButtonLink>
           </aside>
         </Reveal>
       </div>

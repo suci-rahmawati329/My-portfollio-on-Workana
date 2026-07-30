@@ -11,12 +11,11 @@ export function HomeClose() {
               Next step
             </p>
             <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-balance md:text-5xl">
-              Looking for someone who ships with taste and systems thinking?
+              Hiring on Workana for WordPress, stores, payments, or MES?
             </h2>
             <p className="mt-5 max-w-lg text-pretty text-ink-soft">
-              I take on focused product and interface engagements on Workana —
-              clear scope, strong communication, and work you can put in front
-              of users.
+              Open a case study that matches your job — then message me with
+              scope and timeline. I reply with fit, plan, and a clear next step.
             </p>
             <div className="mt-8">
               <ButtonLink href="/contact">Let&apos;s talk</ButtonLink>

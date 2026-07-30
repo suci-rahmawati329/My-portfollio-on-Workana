@@ -92,8 +92,8 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
           >
-            {site.role} on Workana — product UI, systems, and shipping discipline
-            for teams that care how software feels.
+            {site.role} on Workana — WordPress, WooCommerce, payments, marketplace
+            POCs, MES, and legacy ERP work with clear delivery.
           </motion.p>
 
           <motion.div
