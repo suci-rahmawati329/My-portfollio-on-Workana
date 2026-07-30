@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: `%s · ${site.name}`,
   },
   description: site.summary,
-  metadataBase: new URL("https://github.com/suci-rahmawati329/My-portfollio-on-Workana"),
+  metadataBase: new URL("https://my-portfollio-on-workana.vercel.app"),
   openGraph: {
     title: `${site.name} · ${site.role}`,
     description: site.tagline,
