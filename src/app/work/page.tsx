@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
+import { TiltCover } from "@/components/work/TiltCover";
 import { projects } from "@/data/projects";
 
 export const metadata: Metadata = {
@@ -34,11 +35,12 @@ export default function WorkPage() {
                 href={`/work/${project.slug}`}
                 className="group grid gap-6 py-10 md:grid-cols-[0.9fr_1.1fr_auto] md:items-center md:gap-10"
               >
-                <div
+                <TiltCover
+                  from={project.cover.from}
+                  to={project.cover.to}
+                  label={project.cover.label}
+                  year={project.year}
                   className="min-h-[160px] md:min-h-[180px]"
-                  style={{
-                    background: `linear-gradient(145deg, ${project.cover.from}, ${project.cover.to})`,
-                  }}
                 />
                 <div>
                   <p className="text-sm text-muted">

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
+import { TiltCover } from "@/components/work/TiltCover";
 import { projects } from "@/data/projects";
 
 export function SelectedWork() {
@@ -32,22 +33,12 @@ export function SelectedWork() {
                 href={`/work/${project.slug}`}
                 className="group grid gap-6 border-t border-line pt-8 md:grid-cols-[1.1fr_0.9fr] md:gap-10"
               >
-                <div
-                  className="relative min-h-[220px] overflow-hidden md:min-h-[280px]"
-                  style={{
-                    background: `linear-gradient(145deg, ${project.cover.from}, ${project.cover.to})`,
-                  }}
-                >
-                  <div className="absolute inset-0 opacity-40 mix-blend-overlay bg-[radial-gradient(circle_at_30%_20%,white,transparent_45%)] transition duration-700 group-hover:scale-105" />
-                  <div className="absolute inset-0 flex items-end justify-between p-6 text-white">
-                    <span className="font-mono text-xs uppercase tracking-[0.2em] opacity-80">
-                      {project.cover.label}
-                    </span>
-                    <span className="font-mono text-xs opacity-80">
-                      {project.year}
-                    </span>
-                  </div>
-                </div>
+                <TiltCover
+                  from={project.cover.from}
+                  to={project.cover.to}
+                  label={project.cover.label}
+                  year={project.year}
+                />
 
                 <div className="flex flex-col justify-center">
                   <p className="text-sm text-muted">{project.client}</p>
